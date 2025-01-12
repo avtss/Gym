@@ -1,10 +1,8 @@
-<p style="color: green"><%= notice %></p>
 
 <%= render @trainer %>
 
 <div>
-  <%= link_to "Edit this trainer", edit_trainer_path(@trainer) %> |
-  <%= link_to "Back to trainers", trainers_path %>
-
-  <%= button_to "Destroy this trainer", @trainer, method: :delete %>
+  <%= link_to "Вернуться к тренерам", trainers_path %>
+  <p style="color: red">Подтвердите удаление</p>
+  <%= button_to "Подтвердить", @trainer, method: :delete %>
 </div>

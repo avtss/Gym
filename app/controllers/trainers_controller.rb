@@ -1,5 +1,5 @@
 class TrainersController < ApplicationController
-  before_action :set_trainer, only: %i[ show edit update destroy ]
+  before_action :set_trainer, only: %i[show edit update destroy]
 
   # GET /trainers or /trainers.json
   def index
@@ -25,8 +25,8 @@ class TrainersController < ApplicationController
 
     respond_to do |format|
       if @trainer.save
-        format.html { redirect_to @trainer, notice: "Trainer was successfully created." }
-        format.json { render :show, status: :created, location: @trainer }
+        format.html { redirect_to trainers_path, notice: "Trainer was successfully created." }
+        format.json { render :index, status: :created, location: trainers_path }
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @trainer.errors, status: :unprocessable_entity }
@@ -38,8 +38,8 @@ class TrainersController < ApplicationController
   def update
     respond_to do |format|
       if @trainer.update(trainer_params)
-        format.html { redirect_to @trainer, notice: "Trainer was successfully updated." }
-        format.json { render :show, status: :ok, location: @trainer }
+        format.html { redirect_to trainers_path, notice: "Trainer was successfully updated." }
+        format.json { render :index, status: :ok, location: trainers_path }
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @trainer.errors, status: :unprocessable_entity }
@@ -58,13 +58,14 @@ class TrainersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_trainer
-      @trainer = Trainer.find(params.expect(:id))
-    end
 
-    # Only allow a list of trusted parameters through.
-    def trainer_params
-      params.fetch(:trainer, {})
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_trainer
+    @trainer = Trainer.find(params[:id]) # Исправлено `params.expect` на `params[:id]`
+  end
+
+  # Only allow a list of trusted parameters through.
+  def trainer_params
+    params.require(:trainer).permit(:name, :specialization, :email, :phone, :availability_schedule)
+  end
 end

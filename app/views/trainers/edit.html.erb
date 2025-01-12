@@ -1,12 +1,45 @@
-<% content_for :title, "Editing trainer" %>
+<h1>Edit Trainer</h1>
 
-<h1>Editing trainer</h1>
+<%= form_with(model: @trainer, local: true) do |form| %>
+  <% if @trainer.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@trainer.errors.count, "error") %> prohibited this trainer from being saved:</h2>
+      <ul>
+        <% @trainer.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 
-<%= render "form", trainer: @trainer %>
+  <div>
+    <%= form.label :name, 'Имя' %>
+    <%= form.text_field :name, required: true %>
+  </div>
 
-<br>
+  <div>
+    <%= form.label :specialization, 'Специализация' %>
+    <%= form.text_field :specialization, required: true %>
+  </div>
 
-<div>
-  <%= link_to "Show this trainer", @trainer %> |
-  <%= link_to "Back to trainers", trainers_path %>
-</div>
+  <div>
+    <%= form.label :email, 'Почта' %>
+    <%= form.email_field :email, required: true %>
+  </div>
+
+  <div>
+    <%= form.label :phone, 'Номер телефона' %>
+    <%= form.telephone_field :phone, required: true %>
+  </div>
+
+  <div>
+    <%= form.label :availability_schedule, 'Рабочие дни' %>
+    <%= form.text_area :availability_schedule, required: true %>
+  </div>
+
+  <div>
+    <%= form.submit 'Обновить' %>
+  </div>
+<% end %>
+
+<%= link_to 'Вернуться к тренерам', trainers_path %>

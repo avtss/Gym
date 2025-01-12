@@ -1,12 +1,50 @@
-<% content_for :title, "Editing client" %>
+<h1>Изменить клиента</h1>
 
-<h1>Editing client</h1>
+<%= form_with(model: @client, local: true) do |form| %>
+  <% if @client.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@client.errors.count, "error") %> prohibited this client from being saved:</h2>
+      <ul>
+        <% @client.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 
-<%= render "form", client: @client %>
+  <div>
+    <%= form.label :name, 'Имя' %>
+    <%= form.text_field :name, required: true %>
+  </div>
 
-<br>
+  <div>
+    <%= form.label :email, 'Почта' %>
+    <%= form.email_field :email, required: true %>
+  </div>
 
-<div>
-  <%= link_to "Show this client", @client %> |
-  <%= link_to "Back to clients", clients_path %>
-</div>
+  <div>
+    <%= form.label :phone, 'Номер телефона' %>
+    <%= form.telephone_field :phone, required: true %>
+  </div>
+
+  <div>
+    <%= form.label :membership_type, 'Тип абонемента' %>
+    <%= form.text_field :membership_type %>
+  </div>
+
+  <div>
+    <%= form.label :membership_start_date, 'Начало абонемента' %>
+    <%= form.date_field :membership_start_date %>
+  </div>
+
+  <div>
+    <%= form.label :membership_end_date, 'Конец абонемента' %>
+    <%= form.date_field :membership_end_date %>
+  </div>
+
+  <div>
+    <%= form.submit 'Обновить' %>
+  </div>
+<% end %>
+
+<%= link_to 'Вернуться к клиентам', clients_path %>

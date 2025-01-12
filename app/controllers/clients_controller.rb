@@ -1,5 +1,5 @@
 class ClientsController < ApplicationController
-  before_action :set_client, only: %i[ show edit update destroy ]
+  before_action :set_client, only: %i[show edit update destroy]
 
   # GET /clients or /clients.json
   def index
@@ -25,8 +25,8 @@ class ClientsController < ApplicationController
 
     respond_to do |format|
       if @client.save
-        format.html { redirect_to @client, notice: "Client was successfully created." }
-        format.json { render :show, status: :created, location: @client }
+        format.html { redirect_to clients_path, notice: "Client was successfully created." }
+        format.json { render :index, status: :created, location: clients_path }
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @client.errors, status: :unprocessable_entity }
@@ -38,8 +38,8 @@ class ClientsController < ApplicationController
   def update
     respond_to do |format|
       if @client.update(client_params)
-        format.html { redirect_to @client, notice: "Client was successfully updated." }
-        format.json { render :show, status: :ok, location: @client }
+        format.html { redirect_to clients_path, notice: "Client was successfully updated." }
+        format.json { render :index, status: :ok, location: clients_path }
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @client.errors, status: :unprocessable_entity }
@@ -58,13 +58,14 @@ class ClientsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_client
-      @client = Client.find(params.expect(:id))
-    end
 
-    # Only allow a list of trusted parameters through.
-    def client_params
-      params.fetch(:client, {})
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_client
+    @client = Client.find(params[:id]) # Исправлено `params.expect` на `params[:id]`
+  end
+
+  # Only allow a list of trusted parameters through.
+  def client_params
+    params.require(:client).permit(:name, :email, :phone, :membership_type, :membership_start_date, :membership_end_date)
+  end
 end
