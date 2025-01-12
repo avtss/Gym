@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  trainer: one
+  client: one
+  training_date: 2025-01-12 20:19:52
+  duration_minutes: 1
+  training_type: MyString
+  status: MyString
+
+two:
+  trainer: two
+  client: two
+  training_date: 2025-01-12 20:19:52
+  duration_minutes: 1
+  training_type: MyString
+  status: MyString
