@@ -1,9 +1,11 @@
-<h1>Trainers</h1>
+<div class="text-center mb-4">
+  <h1>Тренера</h1>
+  <%= link_to 'Добавить нового тренера', new_trainer_path, class: 'btn btn-primary mb-2' %>
+</div>
 
-<%= link_to 'Add New Trainer', new_trainer_path, class: 'btn btn-primary' %>
 
-<table>
-  <thead>
+<table class="table table-striped table-bordered">
+  <thead class="table-dark">
     <tr>
       <th>Имя</th>
       <th>Специализация</th>
@@ -22,8 +24,8 @@
         <td><%= trainer.phone %></td>
         <td><%= trainer.availability_schedule %></td>
         <td>
-          <%= link_to 'Edit', edit_trainer_path(trainer), class: 'btn btn-secondary' %>
-          <%= link_to 'Delete', trainer, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+          <%= link_to 'Изменить', edit_trainer_path(trainer), class: 'btn btn-secondary btn-sm' %>
+          <%= link_to 'Удалить', trainer, method: :delete, data: { confirm: 'Вы уверены?' }, class: 'btn btn-danger btn-sm' %>
         </td>
       </tr>
     <% end %>

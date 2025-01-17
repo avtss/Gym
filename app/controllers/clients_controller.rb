@@ -61,7 +61,7 @@ class ClientsController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_client
-    @client = Client.find(params[:id]) # Исправлено `params.expect` на `params[:id]`
+    @client = Client.find(params[:id]) 
   end
 
   # Only allow a list of trusted parameters through.

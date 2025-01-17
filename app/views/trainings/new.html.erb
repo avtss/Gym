@@ -1,11 +1,50 @@
-<% content_for :title, "New training" %>
+<h1>Новая тренировка</h1>
 
-<h1>New training</h1>
+<%= form_with(model: @training, local: true) do |form| %>
+  <% if @training.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@training.errors.count, "ошибка") %> помешали создать тренировку:</h2>
+      <ul>
+        <% @training.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 
-<%= render "form", training: @training %>
+  <div>
+    <%= form.label :trainer_id, 'Тренер' %>
+    <%= form.collection_select :trainer_id, Trainer.all, :id, :name, prompt: 'Выберите тренера', required: true %>
+  </div>
 
-<br>
+  <div>
+    <%= form.label :client_id, 'Клиент' %>
+    <%= form.collection_select :client_id, Client.all, :id, :name, prompt: 'Выберите клиента', required: true %>
+  </div>
 
-<div>
-  <%= link_to "Back to trainings", trainings_path %>
-</div>
+  <div>
+    <%= form.label :training_date, 'Дата и время тренировки' %>
+    <%= form.datetime_select :training_date, required: true %>
+  </div>
+
+  <div>
+    <%= form.label :duration_minutes, 'Продолжительность (минут)' %>
+    <%= form.number_field :duration_minutes, required: true %>
+  </div>
+
+  <div>
+    <%= form.label :training_type, 'Тип тренировки' %>
+    <%= form.text_field :training_type, required: true %>
+  </div>
+
+  <div>
+    <%= form.label :status, 'Статус' %>
+    <%= form.text_field :status, required: true %>
+  </div>
+
+  <div>
+    <%= form.submit 'Создать тренировку' %>
+  </div>
+<% end %>
+
+<%= link_to 'Вернуться к тренировкам', trainings_path %>

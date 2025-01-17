@@ -1,17 +1,46 @@
-<%= form_with(model: training) do |form| %>
-  <% if training.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(training.errors.count, "error") %> prohibited this training from being saved:</h2>
-
+<%= form_with(model: @training, local: true) do |form| %>
+  <% if @training.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@training.errors.count, "error") %> prohibited this training from being saved:</h2>
       <ul>
-        <% training.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+        <% @training.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div>
+  <div class="field">
+    <%= form.label :trainer_id %>
+    <%= form.collection_select :trainer_id, Trainer.all, :id, :name, { prompt: "Выберите тренера" } %>
+  </div>
+
+  <div class="field">
+    <%= form.label :client_id %>
+    <%= form.collection_select :client_id, Client.all, :id, :name, { prompt: "Выберите клиента" } %>
+  </div>
+
+  <div class="field">
+    <%= form.label :training_date %>
+    <%= form.datetime_select :training_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :duration_minutes %>
+    <%= form.number_field :duration_minutes %>
+  </div>
+
+  <div class="field">
+    <%= form.label :training_type %>
+    <%= form.text_field :training_type %>
+  </div>
+
+  <div class="field">
+    <%= form.label :status %>
+    <%= form.text_field :status %>
+  </div>
+
+  <div class="actions">
     <%= form.submit %>
   </div>
 <% end %>

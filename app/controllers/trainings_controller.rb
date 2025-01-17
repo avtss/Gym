@@ -25,7 +25,7 @@ class TrainingsController < ApplicationController
 
     respond_to do |format|
       if @training.save
-        format.html { redirect_to @training, notice: "Training was successfully created." }
+        format.html { redirect_to trainings_path, notice: "Training was successfully created." }
         format.json { render :show, status: :created, location: @training }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -60,11 +60,13 @@ class TrainingsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_training
-      @training = Training.find(params.expect(:id))
+      @training = Training.find(params[:id])  
+      @trainer = Trainer.find(@training.trainer_id)  
+      @client = Client.find(@training.client_id)
     end
 
     # Only allow a list of trusted parameters through.
     def training_params
-      params.fetch(:training, {})
+      params.require(:training).permit(:trainer_id, :client_id, :training_date, :duration_minutes, :training_type, :status)
     end
 end

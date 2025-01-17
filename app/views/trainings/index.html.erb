@@ -1,16 +1,34 @@
-<p style="color: green"><%= notice %></p>
-
-<% content_for :title, "Trainings" %>
-
-<h1>Trainings</h1>
-
-<div id="trainings">
-  <% @trainings.each do |training| %>
-    <%= render training %>
-    <p>
-      <%= link_to "Show this training", training %>
-    </p>
-  <% end %>
+<div class="text-center mb-4">
+  <h1>Тренировки</h1>
+  <%= link_to 'Добавить тренировку', new_training_path, class: 'btn btn-primary mb-3' %>
 </div>
 
-<%= link_to "New training", new_training_path %>
+<table class="table table-striped table-bordered">
+  <thead class="table-dark">
+    <tr>
+      <th>Тренер</th>
+      <th>Клиент</th>
+      <th>Дата тренировки</th>
+      <th>Длительность (мин)</th>
+      <th>Тип тренировки</th>
+      <th>Статус</th>
+      <th>Действия</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @trainings.each do |training| %>
+      <tr>
+        <td><%= training.trainer.name %></td>
+        <td><%= training.client.name %></td>
+        <td><%= training.training_date.strftime('%d.%m.%Y %H:%M') %></td>
+        <td><%= training.duration_minutes %></td>
+        <td><%= training.training_type %></td>
+        <td><%= training.status %></td>
+        <td>
+          <%= link_to 'Изменить', edit_training_path(training), class: 'btn btn-secondary btn-sm' %>
+          <%= link_to 'Удалить', training, method: :delete, data: { confirm: 'Вы уверены?' }, class: 'btn btn-danger btn-sm' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

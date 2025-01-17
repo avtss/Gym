@@ -61,7 +61,7 @@ class TrainersController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_trainer
-    @trainer = Trainer.find(params[:id]) # Исправлено `params.expect` на `params[:id]`
+    @trainer = Trainer.find(params[:id])
   end
 
   # Only allow a list of trusted parameters through.
