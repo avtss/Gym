@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_01_12_171952) do
+ActiveRecord::Schema[8.0].define(version: 2025_01_21_222848) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -30,7 +30,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_12_171952) do
     t.string "specialization"
     t.string "email"
     t.string "phone"
-    t.text "availability_schedule"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -48,6 +47,17 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_12_171952) do
     t.index ["trainer_id"], name: "index_trainings_on_trainer_id"
   end
 
+  create_table "work_schedules", force: :cascade do |t|
+    t.bigint "trainer_id", null: false
+    t.string "day_of_week"
+    t.time "start_time"
+    t.time "end_time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["trainer_id"], name: "index_work_schedules_on_trainer_id"
+  end
+
   add_foreign_key "trainings", "clients"
   add_foreign_key "trainings", "trainers"
+  add_foreign_key "work_schedules", "trainers"
 end

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :work_schedules
   resources :trainings
   resources :trainers
   resources :clients
