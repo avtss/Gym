@@ -50,11 +50,7 @@ class WorkSchedulesController < ApplicationController
   # DELETE /work_schedules/1 or /work_schedules/1.json
   def destroy
     @work_schedule.destroy
-
-    respond_to do |format|
-      format.html { redirect_to work_schedules_path, status: :see_other, notice: "Work schedule was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    redirect_to work_schedules_path, notice: 'Рабочее расписание успешно удалено.'
   end
 
   private
