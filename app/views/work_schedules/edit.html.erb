@@ -3,7 +3,7 @@
 <%= form_with(model: @work_schedule, local: true) do |form| %>
   <% if @work_schedule.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@work_schedule.errors.count, "error") %> prohibited this work schedule from being saved:</h2>
+      <h2><%= pluralize(@work_schedule.errors.count, "ошибка(и)") %> не позволили создать рабочий день:</h2>
       <ul>
         <% @work_schedule.errors.full_messages.each do |message| %>
           <li><%= message %></li>

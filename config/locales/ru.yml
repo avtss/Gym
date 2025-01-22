@@ -1,0 +1,51 @@
+ru:
+  date:
+    day_names: [Воскресенье, Понедельник, Вторник, Среда, Четверг, Пятница, Суббота]
+    abbr_day_names: [Вс, Пн, Вт, Ср, Чт, Пт, Сб]
+  activerecord:
+    models:
+      client: "Клиент"
+      trainer: "Тренер"
+      training: "Тренировка"
+    attributes:
+      client:
+        name: "Имя"
+        email: "Почта"
+        phone: "Номер телефона"
+        membership_type: "Тип абонемента"
+        membership_start_date: "Начало абонемента"
+        membership_end_date: "Конец абонемента"
+      trainer:
+        name: "Имя"
+        specialization: "Специализация"
+        email: "Почта"
+        phone: "Номер телефона"
+      training:
+        trainer: "Тренер"
+        client: "Клиент"
+        training_date: "Дата и время"
+        duration_minutes: "Длительность (мин)"
+        training_type: "Тип тренировки"
+        status: "Статус"
+      work_schedule:
+        trainer: "Тренер"
+        day_of_week: "День недели"
+        start_time: "Время начала"
+        end_time: "Время окончания"
+    errors:
+      messages:
+        blank: "не может быть пустым"
+        taken: "уже используется"
+        invalid: "имеет неверный формат"
+        too_short: "слишком короткий"
+        too_long: "слишком длинный"
+        not_a_number: "должно быть числом"
+        greater_than_or_equal_to: "должно быть больше или равно %{count}"
+        less_than_or_equal_to: "должно быть меньше или равно %{count}"
+      template:
+        header:
+          one: "%{model} не может быть сохранён из-за 1 ошибки:"
+          other: "%{model} не может быть сохранён из-за %{count} ошибок:"
+        body: "Пожалуйста, проверьте следующие поля:"
+  errors:
+    format: "%{attribute} %{message}"

@@ -17,7 +17,9 @@
     <tbody>
       <% schedules.each do |work_schedule| %>
         <tr>
-          <td><%= work_schedule.day_of_week %></td>
+          <td>
+            <%= I18n.t("date.day_names")[Date::DAYNAMES.index(work_schedule.day_of_week)] %>
+          </td>
           <td><%= work_schedule.start_time.strftime('%H:%M') %></td>
           <td><%= work_schedule.end_time.strftime('%H:%M') %></td>
           <td>

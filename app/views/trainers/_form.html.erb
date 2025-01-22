@@ -1,7 +1,7 @@
 <%= form_with(model: trainer) do |form| %>
   <% if trainer.errors.any? %>
     <div style="color: red">
-      <h2><%= pluralize(trainer.errors.count, "error") %> prohibited this trainer from being saved:</h2>
+      <h2><%= pluralize(trainer.errors.count, "ошибка(и)") %> не позволили создать тренера:</h2>
 
       <ul>
         <% trainer.errors.each do |error| %>
