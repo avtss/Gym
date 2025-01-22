@@ -3,7 +3,7 @@
   <%= link_to 'Добавить новый день в график', new_work_schedule_path, class: 'btn btn-primary mb-2' %>
 </div>
 
-<% @work_schedules.group_by(&:trainer).each do |trainer, schedules| %>
+<% @bases.group_by(&:trainer).each do |trainer, schedules| %>
   <h3><%= trainer.name %></h3>
   <table class="table table-striped table-bordered">
     <thead class="table-dark">

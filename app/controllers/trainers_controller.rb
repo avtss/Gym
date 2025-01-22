@@ -1,71 +1,8 @@
-class TrainersController < ApplicationController
-  before_action :set_trainer, only: %i[show edit update destroy]
-
-  # GET /trainers or /trainers.json
-  def index
-    @trainers = Trainer.all
-  end
-
-  # GET /trainers/1 or /trainers/1.json
-  def show
-  end
-
-  # GET /trainers/new
-  def new
-    @trainer = Trainer.new
-  end
-
-  # GET /trainers/1/edit
-  def edit
-  end
-
-  # POST /trainers or /trainers.json
-  def create
-    @trainer = Trainer.new(trainer_params)
-
-    respond_to do |format|
-      if @trainer.save
-        format.html { redirect_to trainers_path, notice: "Trainer was successfully created." }
-        format.json { render :index, status: :created, location: trainers_path }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @trainer.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # PATCH/PUT /trainers/1 or /trainers/1.json
-  def update
-    respond_to do |format|
-      if @trainer.update(trainer_params)
-        format.html { redirect_to trainers_path, notice: "Trainer was successfully updated." }
-        format.json { render :index, status: :ok, location: trainers_path }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @trainer.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /trainers/1 or /trainers/1.json
-  def destroy
-    @trainer.destroy!
-
-    respond_to do |format|
-      format.html { redirect_to trainers_path, status: :see_other, notice: "Trainer was successfully destroyed." }
-      format.json { head :no_content }
-    end
-  end
+class TrainersController < BaseController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
-  def set_trainer
-    @trainer = Trainer.find(params[:id])
-  end
-
-  # Only allow a list of trusted parameters through.
-  def trainer_params
+  def base_params
     params.require(:trainer).permit(:name, :specialization, :email, :phone, :availability_schedule)
   end
 end

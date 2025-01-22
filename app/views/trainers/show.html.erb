@@ -1,7 +1,7 @@
-<%= render @trainer %>
+<%= render @base %>
 
 <div>
   <%= link_to "Вернуться к списку тренеров", trainers_path %>
   <p style="color: red">Подтвердите удаление</p>
-  <%= button_to "Подтвердить", @trainer, method: :delete %>
+  <%= button_to "Подтвердить", @base, method: :delete %>
 </div>

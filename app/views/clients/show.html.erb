@@ -1,7 +1,7 @@
-<%= render @client %>
+<%= render @base %>
 
 <div>
   <%= link_to "Вернуться к списку клиентов", clients_path %>
   <p style="color: red">Подтвердите удаление</p>
-  <%= button_to "Подтвердить", @client, method: :delete %>
+  <%= button_to "Подтвердить", @base, method: :delete %>
 </div>

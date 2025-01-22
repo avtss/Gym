@@ -1,11 +1,11 @@
 <h1>Новое рабочее расписание</h1>
 
-<%= form_with(model: @work_schedule, local: true) do |form| %>
-  <% if @work_schedule.errors.any? %>
+<%= form_with(model: @base, local: true) do |form| %>
+  <% if @base.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@work_schedule.errors.count, "ошибка(и)") %> не позволили создать рабочий день:</h2>
+      <h2><%= pluralize(@base.errors.count, "ошибка(и)") %> не позволили создать рабочий день:</h2>
       <ul>
-        <% @work_schedule.errors.full_messages.each do |message| %>
+        <% @base.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
       </ul>

@@ -1,7 +1,7 @@
-<%= render @work_schedule %>
+<%= render @base %>
 
 <div>
   <%= link_to "Вернуться к списку расписаний", work_schedules_path %>
   <p style="color: red">Подтвердите удаление</p>
-  <%= button_to "Подтвердить", @work_schedule, method: :delete %>
+  <%= button_to "Подтвердить", @base, method: :delete %>
 </div>

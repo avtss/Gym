@@ -1,11 +1,11 @@
 <h1>Изменить тренера</h1>
 
-<%= form_with(model: @trainer, local: true) do |form| %>
-  <% if @trainer.errors.any? %>
+<%= form_with(model: @base, local: true) do |form| %>
+  <% if @base.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@trainer.errors.count, "ошибка(и)") %> не позволили создать тренера:</h2>
+      <h2><%= pluralize(@base.errors.count, "ошибка(и)") %> не позволили создать тренера:</h2>
       <ul>
-        <% @trainer.errors.full_messages.each do |message| %>
+        <% @base.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
       </ul>
