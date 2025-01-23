@@ -12,6 +12,36 @@
   <% end %>
 
   <div>
+    <%= form.label :last_name, 'Фамилия' %>
+    <%= form.text_field :last_name, required: true %>
+  </div>
+
+  <div>
+    <%= form.label :first_name, 'Имя' %>
+    <%= form.text_field :first_name, required: true %>
+  </div>
+
+  <div>
+    <%= form.label :middle_name, 'Отчество' %>
+    <%= form.text_field :middle_name %>
+  </div>
+
+  <div>
+    <%= form.label :specialization, 'Специализация' %>
+    <%= form.text_field :specialization, required: true %>
+  </div>
+
+  <div>
+    <%= form.label :email, 'Почта' %>
+    <%= form.email_field :email, required: true %>
+  </div>
+
+  <div>
+    <%= form.label :phone, 'Номер телефона' %>
+    <%= form.telephone_field :phone, required: true %>
+  </div>
+
+  <div>
     <%= form.submit %>
   </div>
 <% end %>

@@ -30,7 +30,7 @@
         <td><%= client.membership_end_date.strftime('%d.%m.%Y') if client.membership_end_date %></td>
         <td>
           <%= link_to 'Изменить', edit_client_path(client), class: 'btn btn-secondary btn-sm' %>
-          <%= link_to 'Удалить', client, method: :delete, data: { confirm: 'Вы уверены?' }, class: 'btn btn-danger btn-sm' %>
+          <%= button_to "Удалить", client, method: :delete, class: 'btn btn-danger btn-sm' %>
         </td>
       </tr>
     <% end %>

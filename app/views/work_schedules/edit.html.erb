@@ -1,44 +1,5 @@
 <h1>Изменить рабочее расписание</h1>
 
-<%= form_with(model: @base, local: true) do |form| %>
-  <% if @base.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@base.errors.count, "ошибка(и)") %> не позволили создать рабочий день:</h2>
-      <ul>
-        <% @base.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div>
-    <%= form.label :trainer_id, 'Тренер' %>
-    <%= form.collection_select :trainer_id, Trainer.all, :id, 
-      lambda { |trainer| "#{trainer.last_name} #{trainer.first_name}" }, 
-      prompt: 'Выберите тренера', required: true %>
-  </div>
-
-  <div>
-    <%= form.label :day_of_week, 'День недели' %>
-    <%= form.select :day_of_week, 
-         [['Понедельник', 'Monday'], ['Вторник', 'Tuesday'], ['Среда', 'Wednesday'], ['Четверг', 'Thursday'], ['Пятница', 'Friday'], ['Суббота', 'Saturday'], ['Воскресенье', 'Sunday']], 
-         prompt: 'Выберите день недели', selected: @base.day_of_week, required: true %>
-  </div>
-
-  <div>
-    <%= form.label :start_time, 'Время начала' %>
-    <%= form.time_select :start_time, required: true %>
-  </div>
-
-  <div>
-    <%= form.label :end_time, 'Время окончания' %>
-    <%= form.time_select :end_time, required: true %>
-  </div>
-
-  <div>
-    <%= form.submit 'Обновить' %>
-  </div>
-<% end %>
+<%= render 'form', work_schedule: @base %>
 
 <%= link_to 'Вернуться к расписаниям', work_schedules_path %>

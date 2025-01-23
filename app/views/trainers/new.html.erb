@@ -1,50 +1,5 @@
 <h1>Новый тренер</h1>
 
-<%= form_with(model: @base, local: true) do |form| %>
-  <% if @base.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@base.errors.count, "ошибка(и)") %> не позволили создать тренера:</h2>
-      <ul>
-        <% @base.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div>
-    <%= form.label :last_name, 'Фамилия' %>
-    <%= form.text_field :last_name, required: true %>
-  </div>
-
-  <div>
-    <%= form.label :first_name, 'Имя' %>
-    <%= form.text_field :first_name, required: true %>
-  </div>
-
-  <div>
-    <%= form.label :middle_name, 'Отчество' %>
-    <%= form.text_field :middle_name %>
-  </div>
-
-  <div>
-    <%= form.label :specialization, 'Специализация' %>
-    <%= form.text_field :specialization, required: true %>
-  </div>
-
-  <div>
-    <%= form.label :email, 'Почта' %>
-    <%= form.email_field :email, required: true %>
-  </div>
-
-  <div>
-    <%= form.label :phone, 'Номер телефона' %>
-    <%= form.telephone_field :phone, required: true %>
-  </div>
-
-  <div>
-    <%= form.submit 'Создать' %>
-  </div>
-<% end %>
+<%= render 'form', trainer: @base %>
 
 <%= link_to 'Вернуться к тренерам', trainers_path %>
