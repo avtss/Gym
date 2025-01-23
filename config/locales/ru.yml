@@ -9,7 +9,9 @@ ru:
       training: "Тренировка"
     attributes:
       client:
-        name: "Имя"
+        last_name: "Фамилия"
+        first_name: "Имя"
+        middle_name: "Отчество"
         email: "Почта"
         phone: "Номер телефона"
         membership_type: "Тип абонемента"

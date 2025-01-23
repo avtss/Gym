@@ -1,5 +1,5 @@
 class Trainer < ApplicationRecord
-    validates :name, :specialization, :email, :phone, presence: true
+    validates :first_name, :last_name, :middle_name, :specialization, :email, :phone, presence: true
 
     validates :email, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP, message: 'имеет неверный формат' }
 

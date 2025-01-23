@@ -13,8 +13,18 @@
   <% end %>
 
   <div>
-    <%= form.label :name, 'Имя' %>
-    <%= form.text_field :name, required: true %>
+    <%= form.label :last_name, 'Фамилия' %>
+    <%= form.text_field :last_name, required: true %>
+  </div>
+
+  <div>
+    <%= form.label :first_name, 'Имя' %>
+    <%= form.text_field :first_name, required: true %>
+  </div>
+
+  <div>
+    <%= form.label :middle_name, 'Отчество' %>
+    <%= form.text_field :middle_name %>
   </div>
 
   <div>

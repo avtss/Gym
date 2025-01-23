@@ -3,6 +3,6 @@ class TrainingsController < BaseController
   private
 
     def base_params
-      params.require(:training).permit(:trainer_id, :client_id, :training_date, :duration_minutes, :training_type, :status)
+      params.require(:training).permit(:trainer_id, :client_id, :training_date, :training_time, :duration_minutes, :training_type, :status)
     end
 end

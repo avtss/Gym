@@ -1,5 +1,5 @@
 class Client < ApplicationRecord
-    validates :name, :email, :phone, :membership_type, :membership_start_date, presence: true
+    validates :first_name, :last_name, :middle_name, :email, :phone, :membership_type, :membership_start_date, presence: true
 
     validates :email, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP, message: 'имеет неверный формат' }
 

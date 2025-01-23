@@ -14,7 +14,9 @@
 
   <div>
     <%= form.label :trainer_id, 'Тренер' %>
-    <%= form.collection_select :trainer_id, Trainer.all, :id, :name, prompt: 'Выберите тренера', required: true %>
+    <%= form.collection_select :trainer_id, Trainer.all, :id, 
+      lambda { |trainer| "#{trainer.last_name} #{trainer.first_name}" }, 
+      prompt: 'Выберите тренера', required: true %>
   </div>
 
   <div>

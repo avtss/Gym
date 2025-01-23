@@ -9,6 +9,7 @@
       <th>Тренер</th>
       <th>Клиент</th>
       <th>Дата тренировки</th>
+      <th>Время тренировки</th>
       <th>Длительность (мин)</th>
       <th>Тип тренировки</th>
       <th>Статус</th>
@@ -18,9 +19,10 @@
   <tbody>
     <% @bases.each do |training| %>
       <tr>
-        <td><%= training.trainer.name %></td>
-        <td><%= training.client.name %></td>
-        <td><%= training.training_date.strftime('%d.%m.%Y %H:%M') %></td>
+        <td><%= "#{training.trainer.last_name} #{training.trainer.first_name}" %></td>
+        <td><%= "#{training.client.last_name} #{training.client.first_name}" %></td>
+        <td><%= training.training_date.strftime('%d.%m.%Y') %></td>
+        <td><%= training.training_time.strftime('%H:%M') %></td>
         <td><%= training.duration_minutes %></td>
         <td><%= training.training_type %></td>
         <td><%= training.status %></td>

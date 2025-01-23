@@ -10,12 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_01_21_222848) do
+ActiveRecord::Schema[8.0].define(version: 2025_01_23_005708) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
   create_table "clients", force: :cascade do |t|
-    t.string "name"
     t.string "email"
     t.string "phone"
     t.string "membership_type"
@@ -23,26 +22,32 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_21_222848) do
     t.date "membership_end_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.string "middle_name"
   end
 
   create_table "trainers", force: :cascade do |t|
-    t.string "name"
     t.string "specialization"
     t.string "email"
     t.string "phone"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "last_name"
+    t.string "first_name"
+    t.string "middle_name"
   end
 
   create_table "trainings", force: :cascade do |t|
     t.integer "trainer_id", null: false
     t.integer "client_id", null: false
-    t.datetime "training_date"
     t.integer "duration_minutes"
     t.string "training_type"
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.date "training_date", null: false
+    t.time "training_time", null: false
     t.index ["client_id"], name: "index_trainings_on_client_id"
     t.index ["trainer_id"], name: "index_trainings_on_trainer_id"
   end
