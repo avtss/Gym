@@ -48,7 +48,8 @@
 
   <div>
     <%= form.label :status, 'Статус' %>
-    <%= form.text_field :status, required: true %>
+    <%= form.select :status, [['Проведена', 'Проведена'], ['Не проведена', 'Не проведена']], 
+                    prompt: 'Выберите статус', required: true %>
   </div>
 
   <div>
