@@ -7,7 +7,7 @@ ru:
       client: "Клиент"
       trainer: "Тренер"
       training: "Тренировка"
-      work_schedule: "График работы"
+      work_schedule: "Рабочий день"
     attributes:
       client:
         last_name: "Фамилия"

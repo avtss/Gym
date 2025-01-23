@@ -1,11 +1,11 @@
 <%= form_with(model: trainer) do |form| %>
   <% if trainer.errors.any? %>
     <div style="color: red">
-      <h2><%= pluralize(trainer.errors.count, "ошибка(и)") %> не позволили создать тренера:</h2>
+      <h2><%= pluralize(trainer.errors.count, "ошибка(и)") %> не позволили сохранить тренера:</h2>
 
       <ul>
-        <% trainer.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+        <% trainer.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
         <% end %>
       </ul>
     </div>
@@ -28,7 +28,8 @@
 
   <div>
     <%= form.label :specialization, 'Специализация' %>
-    <%= form.text_field :specialization, required: true %>
+    <%= form.select :specialization, [['Индивидуальный', 'Индивидуальный'], ['Групповой', 'Групповой']], 
+                    prompt: 'Выберите специализацию', required: true %>
   </div>
 
   <div>
@@ -42,6 +43,6 @@
   </div>
 
   <div>
-    <%= form.submit %>
+    <%= form.submit trainer.persisted? ? 'Обновить тренера' : 'Создать тренера', class: 'btn btn-primary' %>
   </div>
 <% end %>

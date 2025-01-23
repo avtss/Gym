@@ -1,57 +1,57 @@
-<%= form_with(model: client) do |form| %>
+<%= form_with model: client, local: true do |form| %>
   <% if client.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(client.errors.count, "ошибка(и)") %> не позволили создать клиента:</h2>
-
+    <div id="error_explanation">
+      <h2><%= pluralize(client.errors.count, "error") %> не позволяют сохранить клиента:</h2>
       <ul>
-        <% client.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+        <% client.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :last_name, 'Фамилия' %>
-    <%= form.text_field :last_name, required: true %>
+  <div class="field">
+    <%= form.label :last_name, "Фамилия" %>
+    <%= form.text_field :last_name %>
   </div>
 
-  <div>
-    <%= form.label :first_name, 'Имя' %>
-    <%= form.text_field :first_name, required: true %>
+  <div class="field">
+    <%= form.label :first_name, "Имя" %>
+    <%= form.text_field :first_name %>
   </div>
 
-  <div>
-    <%= form.label :middle_name, 'Отчество' %>
+  <div class="field">
+    <%= form.label :middle_name, "Отчество" %>
     <%= form.text_field :middle_name %>
   </div>
 
-  <div>
-    <%= form.label :email, 'Почта' %>
-    <%= form.email_field :email, required: true %>
+  <div class="field">
+    <%= form.label :email, "Почта" %>
+    <%= form.email_field :email %>
   </div>
 
-  <div>
-    <%= form.label :phone, 'Номер телефона' %>
-    <%= form.telephone_field :phone, required: true %>
+  <div class="field">
+    <%= form.label :phone, "Номер телефона" %>
+    <%= form.text_field :phone %>
   </div>
 
-  <div>
-    <%= form.label :membership_type, 'Тип абонемента' %>
-    <%= form.text_field :membership_type %>
+  <div class="field">
+    <%= form.label :membership_type, "Тип абонемента" %>
+    <%= form.select :membership_type, [['Индивидуальный', 'Индивидуальный'], ['Групповой', 'Групповой']], 
+                    prompt: 'Выберите тип абонемента', required: true %>
   </div>
 
-  <div>
-    <%= form.label :membership_start_date, 'Начало абонемента' %>
+  <div class="field">
+    <%= form.label :membership_start_date, "Начало абонемента" %>
     <%= form.date_field :membership_start_date %>
   </div>
 
-  <div>
-    <%= form.label :membership_end_date, 'Конец абонемента' %>
+  <div class="field">
+    <%= form.label :membership_end_date, "Конец абонемента" %>
     <%= form.date_field :membership_end_date %>
   </div>
 
-  <div>
-    <%= form.submit %>
+  <div class="actions">
+    <%= form.submit client.persisted? ? 'Обновить клиента' : 'Создать клиента', class: 'btn btn-primary' %>
   </div>
 <% end %>

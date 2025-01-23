@@ -1,19 +1,21 @@
 class Client < ApplicationRecord
-    validates :first_name, :last_name, :middle_name, :email, :phone, :membership_type, :membership_start_date, presence: true
+  has_many :trainings, dependent: :destroy
 
-    validates :email, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP, message: 'имеет неверный формат' }
+  validates :first_name, :last_name, :middle_name, :email, :phone, :membership_type, :membership_start_date, presence: true
 
-    validates :phone, uniqueness: true, format: { with: /\A[0-9+\-() ]{11}\z/, message: 'имеет неверный формат' }
+  validates :email, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP, message: 'имеет неверный формат' }
 
-    validate :membership_dates_valid
+  validates :phone, uniqueness: true, format: { with: /\A[0-9+\-() ]{11}\z/, message: 'имеет неверный формат' }
 
-    private
+  validate :membership_dates_valid
 
-    def membership_dates_valid
-        if membership_start_date.present? && membership_end_date.present?
-          if membership_start_date > membership_end_date
-            errors.add(:membership_end_date, 'должна быть позже даты начала')
-          end
-        end
+  private
+
+  def membership_dates_valid
+    if membership_start_date.present? && membership_end_date.present?
+      if membership_start_date > membership_end_date
+        errors.add(:membership_end_date, 'должна быть позже даты начала')
       end
+    end
+  end
 end

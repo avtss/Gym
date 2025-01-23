@@ -1,11 +1,11 @@
 <%= form_with(model: training) do |form| %>
   <% if training.errors.any? %>
     <div style="color: red">
-      <h2><%= pluralize(training.errors.count, "ошибка(и)") %> не позволили создать тренировку:</h2>
+      <h2><%= pluralize(training.errors.count, "ошибка(и)") %> не позволили сохранить тренировку:</h2>
 
       <ul>
-        <% training.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+        <% training.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
         <% end %>
       </ul>
     </div>
@@ -42,7 +42,8 @@
 
   <div>
     <%= form.label :training_type, 'Тип тренировки' %>
-    <%= form.text_field :training_type, required: true %>
+    <%= form.select :training_type, [['Групповая', 'Групповая'], ['Индивидуальная', 'Индивидуальная']], 
+                    prompt: 'Выберите тип тренировки', required: true %>
   </div>
 
   <div>
@@ -51,6 +52,6 @@
   </div>
 
   <div>
-    <%= form.submit %>
+    <%= form.submit training.persisted? ? 'Обновить тренировку' : 'Создать тренировку', class: 'btn btn-primary' %>
   </div>
 <% end %>

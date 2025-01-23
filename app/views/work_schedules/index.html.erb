@@ -15,7 +15,7 @@
       </tr>
     </thead>
     <tbody>
-      <% schedules.each do |work_schedule| %>
+      <% schedules.sort_by { |s| Date::DAYNAMES.index(s.day_of_week) }.each do |work_schedule| %>
         <tr>
           <td>
             <%= I18n.t("date.day_names")[Date::DAYNAMES.index(work_schedule.day_of_week)] %>

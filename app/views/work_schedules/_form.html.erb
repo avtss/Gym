@@ -16,7 +16,7 @@
       lambda { |trainer| "#{trainer.last_name} #{trainer.first_name}" }, 
       prompt: 'Выберите тренера', required: true %>
   </div>
-  
+
   <div>
     <%= form.label :day_of_week, 'День недели' %>
     <%= form.select :day_of_week, 
@@ -35,6 +35,6 @@
   </div>
 
   <div>
-    <%= form.submit %>
+    <%= form.submit work_schedule.persisted? ? 'Обновить рабочий день' : 'Создать рабочий день', class: 'btn btn-primary' %>
   </div>
 <% end %>
