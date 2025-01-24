@@ -1,4 +1,4 @@
-class WorkSchedulesController < BaseController
+class WorkSchedulesController < ApplicationController
 
   private
 

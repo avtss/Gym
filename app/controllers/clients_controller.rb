@@ -1,4 +1,4 @@
-class ClientsController < BaseController
+class ClientsController < ApplicationController
   
   private
 

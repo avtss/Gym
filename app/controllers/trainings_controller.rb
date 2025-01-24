@@ -1,4 +1,4 @@
-class TrainingsController < BaseController
+class TrainingsController < ApplicationController
   
   private
 
