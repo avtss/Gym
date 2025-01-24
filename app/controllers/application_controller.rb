@@ -22,36 +22,24 @@ class ApplicationController < ActionController::Base
   def create
     @base = base_class.new(base_params)
 
-    respond_to do |format|
-      if @base.save
-        format.html { redirect_to send("#{controller_name}_path"), notice: "#{base_class.name} успешно создан." }
-        format.json { render :index, status: :created, location: send("#{controller_name}_path") }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @base.errors, status: :unprocessable_entity }
-      end
+    if @base.save
+      redirect_to send("#{controller_name}_path"), notice: "#{base_class.name} успешно создан."
+    else
+      render :new, status: :unprocessable_entity
     end
   end
 
   def update
-    respond_to do |format|
-      if @base.update(base_params)
-        format.html { redirect_to send("#{controller_name}_path"), notice: "#{base_class.name} успешно обновлен." }
-        format.json { render :index, status: :ok, location: send("#{controller_name}_path") }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @base.errors, status: :unprocessable_entity }
-      end
+    if @base.update(base_params)
+      redirect_to send("#{controller_name}_path"), notice: "#{base_class.name} успешно обновлен."
+    else
+      render :edit, status: :unprocessable_entity
     end
   end
 
   def destroy
     @base.destroy!
-
-    respond_to do |format|
-      format.html { redirect_to send("#{controller_name}_path"), status: :see_other, notice: "#{base_class.name} успешно удален." }
-      format.json { head :no_content }
-    end
+    redirect_to send("#{controller_name}_path"), status: :see_other, notice: "#{base_class.name} успешно удален."
   end
 
   private
