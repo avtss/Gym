@@ -24,6 +24,7 @@
           <td><%= work_schedule.end_time.strftime('%H:%M') %></td>
           <td>
             <%= link_to 'Изменить', edit_work_schedule_path(work_schedule), class: 'btn btn-secondary btn-sm' %>
+            <%= link_to 'Подробно', work_schedule_path(work_schedule), class: 'btn btn-info btn-sm' %>
             <%= button_to "Удалить", work_schedule, method: :delete, class: 'btn btn-danger btn-sm' %>
           </td>
         </tr>

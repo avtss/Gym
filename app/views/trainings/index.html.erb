@@ -28,6 +28,7 @@
         <td><%= training.status %></td>
         <td>
           <%= link_to 'Изменить', edit_training_path(training), class: 'btn btn-secondary btn-sm' %>
+          <%= link_to 'Подробно', training_path(training), class: 'btn btn-info btn-sm' %>
           <%= button_to "Удалить", training, method: :delete, class: 'btn btn-danger btn-sm' %>
         </td>
       </tr>

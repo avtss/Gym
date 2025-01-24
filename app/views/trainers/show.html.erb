@@ -1,7 +1,11 @@
+<div style="text-align: center; margin: 20px 0;">
+  <h1 style="text-transform: uppercase;">
+    <%= "#{@base.last_name} #{@base.first_name} #{@base.middle_name}".strip %>
+  </h1>
+</div>
+
 <%= render @base %>
 
 <div>
-  <%= link_to "Вернуться к списку тренеров", trainers_path %>
-  <p style="color: red">Подтвердите удаление</p>
-  <%= button_to "Подтвердить", @base, method: :delete %>
+  <%= link_to "Вернуться к списку тренеров", trainers_path, class: 'btn btn-primary' %>
 </div>

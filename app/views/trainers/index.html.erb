@@ -26,6 +26,7 @@
         <td><%= trainer.phone %></td>
         <td>
           <%= link_to 'Изменить', edit_trainer_path(trainer), class: 'btn btn-secondary btn-sm' %>
+          <%= link_to 'Подробно', trainer_path(trainer), class: 'btn btn-info btn-sm' %>
           <%= button_to "Удалить", trainer, method: :delete, class: 'btn btn-danger btn-sm' %>
         </td>
       </tr>
